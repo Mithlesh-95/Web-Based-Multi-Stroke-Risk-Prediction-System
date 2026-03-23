@@ -1,0 +1,194 @@
+.problem-statement-section {
+    width: 100%;
+    padding: 120px 20px;
+    background-color: var(--bg-dark);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    overflow: hidden;
+    /* For the accent line containment */
+}
+
+/* Vertical Accent on the left (The "Research Dashboard" feel) */
+.problem-statement-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15%;
+    /* Start slightly down */
+    height: 70%;
+    /* Not full height, feels more intentional */
+    width: 3px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(255, 255, 255, 0.15),
+            transparent);
+    opacity: 0.6;
+}
+
+/* Subtle background spotlight ("The Void") */
+.problem-statement-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 40%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 60%);
+    pointer-events: none;
+}
+
+.problem-content {
+    max-width: 65%;
+    min-width: 320px;
+    width: 100%;
+    text-align: center;
+    /* Default center for Title/Intro/Conclusion */
+    position: relative;
+    z-index: 2;
+}
+
+.problem-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    opacity: 0.95;
+}
+
+.problem-intro {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+}
+
+/* Micro-label above the stack */
+.problem-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* The Problem Stack (Glass Panel) */
+.problem-list {
+    list-style: none;
+    padding: 2.5rem 3rem;
+    /* Generous padding */
+    /* Glass Panel Styles */
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    /* Soft blur if supported */
+    border-radius: 1rem;
+
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    text-align: left;
+    /* Left-aligned content */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.problem-list li {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 1.5rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* Core Pain Highlight (3rd Item) */
+.problem-list li:nth-child(3) {
+    color: #ffffff;
+    /* Brighter */
+    font-weight: 500;
+    /* Thicker */
+    opacity: 1;
+}
+
+/* Optional: Subtle accent line for the highlighted item */
+.problem-list li:nth-child(3)::after {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    /* Outside the padding of li */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+    opacity: 0.5;
+}
+
+/* Minimal bullet/dash */
+.problem-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 6px;
+    height: 1px;
+    background-color: var(--text-muted);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.problem-list li:hover {
+    color: var(--text-primary);
+    opacity: 1;
+    transform: translateX(4px);
+    /* Subtle shift */
+}
+
+.problem-list li:hover::before {
+    background-color: var(--accent-primary);
+    opacity: 1;
+    width: 8px;
+    /* Grow slightly */
+}
+
+.problem-conclusion {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    margin-top: 1rem;
+    max-width: 750px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .problem-statement-section {
+        padding: 80px 20px;
+    }
+
+    .problem-content {
+        max-width: 90%;
+    }
+
+    .problem-list {
+        padding: 1.5rem;
+    }
+}

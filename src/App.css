@@ -1,0 +1,388 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.hero-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  overflow: visible;
+
+}
+
+/* Glassmorphism Panel styles */
+.hero-glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    inset 0 0 32px -8px rgba(255, 255, 255, 0.04);
+  border-radius: 2rem;
+  padding: 2.5rem 3rem;
+  /* Reduced from 3rem 4rem */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle shine effect */
+.hero-glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+/* Specific Columns */
+.col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 20;
+  padding: 2rem;
+  position: relative;
+  /* Ensure text stacking */
+}
+
+/* Spotlight specifically behind the middle card */
+.col-center::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  /* Slightly wider than the card */
+  height: 80%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  filter: blur(60px);
+  z-index: -1;
+  /* Behind the glass card */
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.col-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+/* Typography */
+/* Typography */
+/* Typography */
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  /* Monochrome */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  margin-bottom: 1rem;
+  /* Reduced from 1.5rem */
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  /* Reduced from 4rem */
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  /* Reduced from 2rem */
+  letter-spacing: -0.03em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+  /* Silver Gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  display: inline-block;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+}
+
+/* Buttons */
+/* Buttons */
+.cta-button {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  padding: 1.25rem 3.5rem;
+  border-radius: 2rem;
+  /* Fully rounded for more modern feel */
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Shimmer Effect Layer */
+.cta-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.cta-button:hover::after {
+  left: 100%;
+  transition: 0.7s ease-in-out;
+}
+
+/* Active Click State for tactile feel */
+.cta-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  /* Initially hidden */
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Placeholders */
+.placeholder-box {
+  width: 60%;
+  height: 60%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.placeholder-box:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+/* Spline Blending - Unified Smart Masking */
+.spline-wrapper {
+  /* Unified mask for BOTH models to ensure consistent visual weight */
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  transition: all 0.5s ease;
+  opacity: 0.9;
+}
+
+.spline-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+  /* Balanced contrast for "studio" look */
+  filter: brightness(1.1) contrast(1.15) saturate(1.1);
+}
+
+/* Ambient Glow behind Spline models */
+.ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  /* Neutral White Glow */
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+  /* Visibility check */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.heart-wrapper .ambient-glow {
+  display: none;
+}
+
+/* --- Mobile Responsiveness --- */
+
+@media (max-width: 1024px) {
+  .hero-container {
+    /* Slightly tighter grid for tablets */
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+  }
+
+  .hero-headline {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Attempt to fit in viewport without scrolling */
+    min-height: 100vh;
+    overflow: hidden;
+    /* Prevent scrolling if possible */
+  }
+
+  /* Hide the Heart Model as requested */
+  .heart-wrapper {
+    display: none !important;
+  }
+
+  /* Brain Model - TOP */
+  .col-side {
+    order: 1;
+    height: 40vh;
+    /* Takes top 40% */
+    width: 100%;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    /* Pass clicks */
+  }
+
+  /* Text/Card - BOTTOM */
+  .col-center {
+    order: 2;
+    height: 60vh;
+    /* Takes bottom 60% */
+    width: 100%;
+    padding: 0 1.5rem 2rem;
+    justify-content: flex-start;
+    /* Align to top of this section */
+    padding-top: 1rem;
+    z-index: 30;
+  }
+
+  .hero-glass-card {
+    padding: 2rem 1rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    /* Slightly more transparent */
+    backdrop-filter: blur(16px);
+    border: none;
+    /* Cleaner look */
+    box-shadow: none;
+    /* Flat look for mobile */
+    align-items: center;
+  }
+
+  .hero-headline {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    width: auto;
+    /* Fit content */
+    min-width: 200px;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    /* Center aligns by default in flex column center */
+  }
+
+  /* Explicitly target spline canvas to proper fit */
+  .spline-wrapper canvas {
+    object-fit: contain !important;
+    transform: scale(0.8);
+    /* Scale down slightly inside container if huge */
+  }
+}

@@ -19,7 +19,6 @@
 
 ## 📸 Screenshots
 
-> **Note:** Please add a screenshot of the homepage and name the file `screenshot.png` in the root directory for it to be displayed here.
 
 ![NeuroCardia AI Screenshot](./screenshot.png)
 

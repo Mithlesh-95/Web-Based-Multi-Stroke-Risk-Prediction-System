@@ -16,6 +16,7 @@
 - **PDF Report Generation**: Download detailed prediction reports
 - **Multi-stroke Classification**: No Stroke, Brain Stroke, Heart Stroke
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Modern Tech Stack**: Fast and responsive, built using React, TypeScript, and Vite
 
 ## 🛠️ Built With
 
@@ -173,17 +174,15 @@ mini-demo/
 - Timestamp and session data
 
 ## 📊 API Endpoints
-   cd Web-Based-Multi-Stroke-Risk-Prediction-System
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-5. Open your browser and visit `http://localhost:5173` to view the application.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/` | Login endpoint |
+| POST | `/register` | User registration |
+| GET | `/dashboard` | Get dashboard data |
+| POST | `/predict` | Predict stroke risk |
+| GET | `/download_pdf` | Download PDF report |
+| GET | `/logout` | User logout |
 
 ## 📜 License
 

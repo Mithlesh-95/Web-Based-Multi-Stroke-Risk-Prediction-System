@@ -6,6 +6,9 @@
 
 **NeuroCardia AI** is an advanced, web-based platform designed to assess and predict the risk of multiple types of strokes using AI-powered deep neural networks. This integrated version combines a modern React frontend with a Flask backend featuring:
 
+###Screenshots
+screenshot.png
+
 ### ✨ Key Features
 
 - **AI-Powered Deep Neural Network**: 88% accurate DNN model trained on stroke prediction data

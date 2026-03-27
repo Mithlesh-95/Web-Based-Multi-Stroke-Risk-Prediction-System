@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<style>
+body {
+    margin:0;
+    font-family:Segoe UI;
+    background:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528') no-repeat center/cover;
+}
+
+.container {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card {
+    background:rgba(255,255,255,0.9);
+    padding:40px;
+    border-radius:15px;
+    width:350px;
+    text-align:center;
+}
+
+input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button {
+    width:100%;
+    padding:10px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+
+a { color:#333; text-decoration:none; }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="card">
+    <h2>Login</h2>
+
+    <form method="POST">
+      <input name="username" placeholder="Username" required>
+      <input name="password" type="password" placeholder="Password" required>
+      <button>Login</button>
+    </form>
+
+    <p>New user? <a href="/register">Register</a></p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,9 +1,120 @@
+import { useState, useEffect } from 'react'
 import Spline from '@splinetool/react-spline'
 import { ProblemStatement } from './components/ProblemStatement'
 import { RiskAssessment } from './components/RiskAssessment'
+import { Login } from './components/Login'
+import { Register } from './components/Register'
+import { Dashboard } from './components/Dashboard'
+import { Prediction } from './components/Prediction'
 import './App.css'
 
+type AppView = 'landing' | 'login' | 'register' | 'dashboard' | 'prediction'
+
 function App() {
+  const [currentView, setCurrentView] = useState<AppView>('landing')
+  const [username, setUsername] = useState('')
+
+  // Check if user is already logged in on mount
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/dashboard', {
+          credentials: 'include'
+        })
+        if (response.ok) {
+          setCurrentView('dashboard')
+        }
+      } catch (err) {
+        // User not logged in
+      }
+    }
+    checkSession()
+  }, [])
+
+  const handleLoginSuccess = () => {
+    setCurrentView('dashboard')
+  }
+
+  const handleRegisterSuccess = () => {
+    setCurrentView('login')
+  }
+
+  const handleLogout = async () => {
+    try {
+      await fetch('http://127.0.0.1:5000/logout', {
+        credentials: 'include'
+      })
+    } catch (err) {
+      console.error('Logout error:', err)
+    }
+    setCurrentView('landing')
+    setUsername('')
+  }
+
+  if (currentView === 'login') {
+    return (
+      <>
+        <Login onLoginSuccess={handleLoginSuccess} />
+        <div style={{ textAlign: 'center', padding: '1rem' }}>
+          <button
+            onClick={() => setCurrentView('landing')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#8b5cf6',
+              cursor: 'pointer',
+              textDecoration: 'underline'
+            }}
+          >
+            Back to Home
+          </button>
+        </div>
+      </>
+    )
+  }
+
+  if (currentView === 'register') {
+    return (
+      <>
+        <Register onRegisterSuccess={handleRegisterSuccess} />
+        <div style={{ textAlign: 'center', padding: '1rem' }}>
+          <button
+            onClick={() => setCurrentView('login')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#8b5cf6',
+              cursor: 'pointer',
+              textDecoration: 'underline'
+            }}
+          >
+            Back to Login
+          </button>
+        </div>
+      </>
+    )
+  }
+
+  if (currentView === 'dashboard') {
+    return (
+      <Dashboard
+        username={username || 'User'}
+        onLogout={handleLogout}
+        onNavigateToPrediction={() => setCurrentView('prediction')}
+      />
+    )
+  }
+
+  if (currentView === 'prediction') {
+    return (
+      <Prediction
+        onLogout={handleLogout}
+        onBackToDashboard={() => setCurrentView('dashboard')}
+      />
+    )
+  }
+
+  // Landing page
   return (
     <>
       <div className="hero-container">
@@ -30,11 +141,35 @@ function App() {
               Multi-Stroke Risk Intelligence
             </p>
 
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+              <button
+                className="cta-button"
+                onClick={() => setCurrentView('login')}
+              >
+                Sign In
+              </button>
+              <button
+                className="cta-button"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}
+                onClick={() => setCurrentView('register')}
+              >
+                Create Account
+              </button>
+            </div>
+
             <button
               className="cta-button"
+              style={{
+                marginTop: '1rem',
+                background: 'transparent',
+                border: 'none'
+              }}
               onClick={() => document.getElementById('risk-assessment')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Start Risk Assessment
+              View Demo
             </button>
           </div>
         </div>

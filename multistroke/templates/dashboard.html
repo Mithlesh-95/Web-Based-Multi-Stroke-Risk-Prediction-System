@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body {
+    margin:0;
+    font-family:Segoe UI;
+    background:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5') no-repeat center/cover;
+    color:white;
+    text-align:center;
+}
+
+.container {
+    margin-top:150px;
+}
+
+a {
+    display:inline-block;
+    margin:10px;
+    padding:12px 20px;
+    background:white;
+    color:black;
+    border-radius:8px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Welcome {{ session.user }}</h1>
+
+  <a href="/predict">Prediction</a>
+  <a href="/logout">Logout</a>
+</div>
+</body>
+</html>
